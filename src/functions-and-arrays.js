@@ -72,6 +72,29 @@ function averageWordLength(wordsArr) {
   return average;
 }
 
+//Bonus Iteration #4.1: A generic `avg()` function
+function sum(mixedArr) {
+  if(mixedArr.length === 0)
+    return 0;
+
+  let sum = 0;
+  
+  mixedArr.forEach(element => {
+    if(typeof element === "array" || typeof element === "object") {
+      throw new Error(`Unsupported data type sir or ma'am`);
+    } else {
+      switch(typeof element) {
+        case 'string':
+          sum += element.length;
+          break;
+        default:
+          sum += element;
+      }
+    }
+  });
+  return sum;
+}
+
 // Iteration #5: Unique arrays
 const wordsUnique = [
   'crab',
