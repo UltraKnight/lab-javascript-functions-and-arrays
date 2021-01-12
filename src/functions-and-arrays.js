@@ -72,7 +72,7 @@ function averageWordLength(wordsArr) {
   return average;
 }
 
-//Bonus Iteration #3.1: A generic `sum()` function
+//Bonus - Iteration #3.1: A generic `sum()` function
 function sum(mixedArr) {
   if(mixedArr.length === 0)
     return 0;
@@ -93,6 +93,16 @@ function sum(mixedArr) {
     }
   });
   return sum;
+}
+
+//Bonus - Iteration #4.1: A generic `avg()` function
+function avg(arr) {
+  if(arr.length === 0)
+    return null;
+
+  let numOfElements = arr.length;
+
+  return parseFloat((sum(arr)/numOfElements).toFixed(2));
 }
 
 // Iteration #5: Unique arrays
@@ -171,6 +181,54 @@ function howManyTimes(wordsArr, wordToSearch) {
   return numOfOcurrences;
 }
 
+//Bonus - Iteration #8: Product of adjacent numbers
+function greatestProduct(matrix) {
+  let greatestHorizontal = 0;
+  let greatestVertical = 0;
+  let temp = 1;
+  let counter = 0;
+  let vCounter = 0;
+
+  //horizontal verification of the greatest product
+  matrix.forEach(innerMatrix => { //retrieves every index of the matrix
+    temp = 1;
+    counter = 0;
+    while(counter < innerMatrix.length - 3) {
+      for(let i = counter; i < counter + 4; i++) { //four by four
+        temp *= innerMatrix[i];
+      }
+      if(temp > greatestHorizontal) {
+        greatestHorizontal = temp;
+      }
+      counter++;
+    }
+  });
+
+  counter = 0;
+  vCounter = 0;
+
+  //vertical verification of the greatest product
+  while(vCounter < matrix.length) { //while don't reach the last column
+    while(counter < matrix.length - 3) {
+      temp = 1;
+      for(let i = counter; i < counter + 4; i++) {
+        temp *= matrix[i][vCounter]; //get four by four in vertical
+      }
+      if(temp > greatestVertical) {
+        greatestVertical = temp;
+      }
+      counter++;
+    }
+    counter = 0; //first line of the next column
+    vCounter++; //next column
+  }
+
+  if(greatestVertical > greatestHorizontal) {
+    return greatestHorizontal;
+  } else {
+    return greatestVertical;
+  }
+}
 // Iteration #8: Bonus
 
 const matrix = [
