@@ -72,7 +72,7 @@ function averageWordLength(wordsArr) {
   return average;
 }
 
-//Bonus Iteration #4.1: A generic `avg()` function
+//Bonus Iteration #3.1: A generic `sum()` function
 function sum(mixedArr) {
   if(mixedArr.length === 0)
     return 0;
